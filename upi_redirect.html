@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Redirecting to UPI Payment</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f9fafb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 20px;
+      text-align: center;
+    }
+    .container {
+      max-width: 500px;
+    }
+    .message {
+      font-size: 18px;
+      color: #111827;
+    }
+    .fallback {
+      display: none;
+      margin-top: 20px;
+      color: #6b7280;
+      font-size: 14px;
+    }
+    code {
+      display: block;
+      background: #f3f4f6;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 6px;
+      word-break: break-word;
+    }
+    .error {
+      color: #dc2626;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="message">🔁 Redirecting to your UPI app...</div>
+    <div id="fallback" class="fallback">
+      If your UPI app didn’t open, copy this link and paste it in your UPI app:
+      <code id="upiLink"></code>
+    </div>
+    <div id="error" class="error" style="display: none;">❌ Invalid or missing UPI URL.</div>
+  </div>
+
+  <script>
+    window.onload = function () {
+      const params = new URLSearchParams(window.location.search);
+      const rawUpi = params.get("upi");
+
+      if (rawUpi && rawUpi.startsWith("upi://")) {
+        window.location.href = rawUpi;
+        setTimeout(() => {
+          document.getElementById("fallback").style.display = "block";
+          document.getElementById("upiLink").textContent = rawUpi;
+        }, 3000);
+      } else {
+        document.querySelector(".message").style.display = "none";
+        document.getElementById("error").style.display = "block";
+      }
+    };
+  </script>
+</body>
+</html>
