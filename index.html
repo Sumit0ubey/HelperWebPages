@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Redirecting to UPI Payment</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f9fafb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 20px;
+      text-align: center;
+    }
+    .container {
+      max-width: 500px;
+    }
+    .message {
+      font-size: 18px;
+      color: #111827;
+    }
+    .fallback {
+      display: none;
+      margin-top: 20px;
+      color: #6b7280;
+      font-size: 14px;
+    }
+    code {
+      display: block;
+      background: #f3f4f6;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 6px;
+      word-break: break-word;
+    }
+    .error {
+      color: #dc2626;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="message">Helper Web Pages</div>
+    <div id="fallback" class="fallback">
+      1. <a href="upi_redirect.html">UPI Redirect web page</a>
+    </div>
+  </div>
+
+</body>
+</html>
